@@ -48,7 +48,7 @@ def send_post(message):
             bot.send_message(message.chat.id, f"{post.url}\n{post.title}")
 
 
-# When username "Saarikeisari" messages to the group 1337, the bot answers with a meme from the Formuladank subreddit
+# When username "Saarikeisari" messages to the group with "1337", the bot answers with a meme from the Formuladank subreddit
 @bot.message_handler(func=lambda message: message.text is not None and '1337' in message.text and message.from_user.username == "Saarikeisari")
 def send_post(message):
   post = get_post(rddt=reddit, sbrddt="formuladank")
@@ -65,6 +65,6 @@ def send_post(message):
 @bot.edited_message_handler(func=lambda message: message.text is not None)
 def send_edit_message(message):
   bot.send_message(chat_id=message.chat.id, text="Sakkoo :D")
-  
+
 
 bot.polling()
